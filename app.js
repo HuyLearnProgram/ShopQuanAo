@@ -85,6 +85,7 @@ app.use(function(req, res, next){
 
 app.use('/', index);
 app.use('/users', users);
+// app.use('/cart', cart);
 // app.use('/admin', admin);
 // app.use('/admin/cate', cate);
 // app.use('/admin/product', product);

@@ -148,6 +148,52 @@ router.get('/add-cart.:id', async function (req, res) {
         res.status(500).send(err.message);
     }
 });
+router.post('/add-cart.:id', async function (req, res) {
+    try {
+        const data = await Product.findById(req.params.id);
+        if (!data) {
+            return res.status(404).send("Sản phẩm không tồn tại");
+        }
+
+        const quantity = parseInt(req.body.quantity) || 1; // Lấy số lượng từ form, mặc định là 1
+        const giohang = new GioHang(req.session.cart ? req.session.cart : { items: {} });
+
+        giohang.adds(req.params.id, data, quantity); // Truyền số lượng vào
+
+        req.session.cart = giohang;
+        res.redirect('/gio-hang.html');
+    } catch (err) {s
+        res.status(500).send(err.message);
+    }
+});
+
+// router.get('/add-cart/:id', async function (req, res) {
+//     try {
+//         const productId = req.params.id; // Lấy ID sản phẩm từ URL
+//         const quantity = parseInt(req.query.quantity) || 1; // Lấy số lượng từ query params, mặc định là 1
+
+//         // Tìm sản phẩm trong database
+//         const data = await Product.findById(productId);
+//         if (!data) {
+//             return res.status(404).send("Sản phẩm không tồn tại");
+//         }
+
+//         // Lấy giỏ hàng từ session hoặc tạo mới
+//         const giohang = new GioHang(req.session.cart ? req.session.cart : { items: {} });
+
+//         // Thêm sản phẩm vào giỏ hàng
+//         giohang.adds(productId, data, quantity);
+
+//         // Cập nhật session giỏ hàng
+//         req.session.cart = giohang;
+
+//         // Chuyển hướng đến trang giỏ hàng
+//         res.redirect('/gio-hang.html');
+//     } catch (err) {
+//         res.status(500).send(err.message);
+//     }
+// });
+
 
 // router.get('/add-cart.:id', async function (req, res) {
 //     try {
