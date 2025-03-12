@@ -12,7 +12,7 @@ var bcrypt = require('bcryptjs');
 
 var index = require('./routes/index');
 var users = require('./routes/users');
-var admin = require('./routes/admin');
+// var admin = require('./routes/admin');
 var cate = require('./routes/cate');
 var product = require('./routes/product');
 var cart = require('./routes/cart');
@@ -85,10 +85,10 @@ app.use(function(req, res, next){
 
 app.use('/', index);
 app.use('/users', users);
-app.use('/admin', admin);
-app.use('/admin/cate', cate);
-app.use('/admin/product', product);
-app.use('/admin/cart', cart);
+// app.use('/admin', admin);
+// app.use('/admin/cate', cate);
+// app.use('/admin/product', product);
+// app.use('/admin/cart', cart);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
