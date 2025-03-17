@@ -40,6 +40,10 @@
                   <li>
                   <li><a class="shoppingcart" href="/gio-hang.html">Shopping Cart</a>
                   </li>
+                  <li class="user-profile">
+                      <img src="/img/avtar.jpg" alt="User Avatar" class="user-avatar">
+                      <span class="user-name">Guest</span>
+                  </li>
                 </ul>
               </div>
             </div>
@@ -59,3 +63,33 @@
     </div>
   </div>
 </header>
+
+<style>
+.user-profile {
+  margin-left: auto; /* Đẩy icon về bên phải */
+  display: flex;
+  align-items: center;
+  margin-top: -10px;
+}
+
+.user-profile span {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: #ddd;
+  font-weight: bold;
+}
+
+.user-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%; /* Làm tròn ảnh */
+  margin-right: 8px;
+  object-fit: cover; /* Đảm bảo ảnh không bị méo */
+}
+
+.user-name {
+  font-size: 14px;
+}
+
+</style>
