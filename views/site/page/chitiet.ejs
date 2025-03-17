@@ -28,8 +28,22 @@
                   <span class="spiral"></span><%= data.price%></div>
               </div>
               <ul class="productpagecart">
-                <li><a class="cart" href="/add-cart.<%= data._id %>">Add to Cart</a>
-                </li>
+                <!-- <div class="quantity-container">
+                  <button type="button" class="qty-btn" onclick="decreaseQty()">-</button>
+                  <input type="number" id="quantity" value="1" min="1" readonly>
+                  <button type="button" class="qty-btn" onclick="increaseQty()">+</button>
+              </div>
+              
+              <a href="#" id="addToCartBtn" class="cart">Thêm vào giỏ hàng</a> -->
+              <form id="addToCartForm" action="/add-cart.<%= data._id %>" method="POST">
+                <div class="quantity-container">
+                    <button type="button" class="qty-btn" onclick="decreaseQty()">-</button>
+                    <input type="number" name="quantity" id="quantity" value="1" min="1">
+                    <button type="button" class="qty-btn" onclick="increaseQty()">+</button>
+                </div>
+                <button type="submit" class="cart">Add to Cart</button>
+            </form>
+              
               </ul>
          <!-- Product Description tab & comments-->
          <div class="productdesc">
@@ -83,3 +97,70 @@
 
 <!-- Footer -->
 <% include ../layout/footer.ejs %>
+<style>
+  .quantity-container {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-bottom: 10px;
+  }
+
+  .qty-btn {
+    width: 30px;
+    height: 30px;
+    font-size: 18px;
+    border: 1px solid #ccc;
+    background-color: #f8f8f8;
+    cursor: pointer;
+  }
+
+  #quantity {
+    width: 50px;
+    text-align: center;
+    font-size: 16px;
+    margin-bottom: auto;
+    margin-top: auto;
+  }
+  .productpagecart form {
+  display: inline-block;
+  margin-top: 20px;
+  margin-left: 0px;
+}
+
+.productpagecart button.cart {
+  background: #F25C27 url(../img/productpageicon.png) no-repeat 10px 12px;
+  color: #fff;
+  padding: 15px 15px 15px 60px;
+  font-size: 18px;
+  border: none;
+  cursor: pointer;
+  display: inline-block;
+  text-align: center;
+}
+
+.productpagecart button.cart:hover {
+  background-color: #d8420e;
+}
+</style>
+
+<script>
+  function increaseQty() {
+    let qtyInput = document.getElementById("quantity");
+    qtyInput.value = parseInt(qtyInput.value) + 1;
+}
+
+  function decreaseQty() {
+      let qtyInput = document.getElementById("quantity");
+      if (qtyInput.value > 1) {
+          qtyInput.value = parseInt(qtyInput.value) - 1;
+      }
+  }
+
+  // document.getElementById("addToCartBtn").addEventListener("click", function () {
+  //     let productId = "<%= data._id %>"; // Lấy ID sản phẩm từ server-side rendering
+  //     let quantity = document.getElementById("quantity").value;
+  //     console.log(`/add-cart/${productId}?quantity=${quantity}`);
+  //     window.location.href = `/add-cart/${productId}?quantity=${quantity}`;
+  // });
+
+</script>
