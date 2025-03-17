@@ -52,13 +52,50 @@
                 <td><span class="bold totalamout"><%= total%> đ</span></td>
               </tr>
             </table>
-            <a href="/dat-hang.html" class="btn btn-orange pull-right">Đặt Hàng</a>
+            <!-- <a href="/dat-hang.html" class="btn btn-orange pull-right">Đặt Hàng</a> -->
+            <a href="javascript:void(0);" class="btn btn-orange pull-right" onclick="openConfirmationModal()">Đặt Hàng</a>
+
           </div>
         </div>
         </div>
     </div>
   </section>
 </div>
+
+<!-- Modal (Pop-up xác nhận) -->
+<div id="confirmationModal" class="modal" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title">Xác Nhận Đặt Hàng</h4>
+      </div>
+      <div class="modal-body">
+        <p>Bạn có chắc chắn muốn đặt hàng không?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Hủy</button>
+        <a href="/dat-hang.html" id="confirmOrder" class="btn btn-orange">Xác Nhận</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script type="text/javascript">
+  // Đảm bảo modal không hiển thị ngay khi trang tải
+  $(document).ready(function() {
+    $('#confirmationModal').modal('hide'); // Ẩn modal khi trang tải xong
+  });
+
+  function openConfirmationModal() {
+    // Mở modal khi người dùng nhấn Đặt Hàng
+    $('#confirmationModal').modal('show');
+  }
+
+  // Nếu bạn sử dụng jQuery, việc này đảm bảo rằng sự kiện sẽ chỉ được gọi khi người dùng nhấn vào nút
+</script>
+
 
 <!-- Footer -->
 <% include ../layout/footer.ejs %>

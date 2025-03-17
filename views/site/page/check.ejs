@@ -1,5 +1,29 @@
 <% include ../layout/header.ejs %>
 <!-- Header End -->
+<style>
+  /* Mở rộng chiều rộng cho các ô nhập liệu */
+  .control-group .controls input,
+  .control-group .controls textarea {
+    width: 100%;  /* Chiếm toàn bộ chiều rộng của phần chứa */
+    padding: 10px; /* Thêm khoảng đệm cho các ô */
+    border-radius: 4px; /* Thêm bo tròn cho các ô */
+  }
+
+  /* Tùy chỉnh cho các ô nhập liệu cụ thể */
+  #name, #email, #phone, #message {
+    max-width: 70%; /* Đảm bảo các ô chiếm tối đa chiều rộng có sẵn */
+  }
+
+  /* Nếu bạn muốn điều chỉnh độ rộng của các phần .span9 và .span3 */
+  .span9 {
+    width: 65%;  /* Hoặc bất kỳ độ rộng nào bạn muốn */
+  }
+
+  .span3 {
+    width: 25%;  /* Điều chỉnh độ rộng của sidebar */
+  }
+</style>
+
 
 <div id="maincontainer">
   <section id="product">
@@ -67,13 +91,12 @@
           <aside>
             <div class="sidewidt">
               <h2 class="heading2"><span>Contact Info</span></h2>
-              <p> Lorem Ipsum is simply<br>
-                Lorem Ipsum is simply<br>
-               Lorem Ipsum is simply<br>
+               <p>
+                Địa chỉ: 97 Man Thiện, Hiệp Phú, Thủ Đức, Hồ Chí Minh 70000
                 <br>
                 Phone: (012) 333-7890<br>
                 Fax: (123) 444-7890<br>
-                Email: test@contactus.com<br>
+                Email: hoanhtuan@contactus.com<br>
                 Web: yourcompanyname.com<br>
               </p>
             </div>
